@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monumentos de Zaragoza</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background-color: #f5f7fa;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0b4f8a, #1d7bc1);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    nav {
+      background-color: #083b66;
+      padding: 12px 20px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffd166;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: 30px auto;
+    }
+
+    .intro {
+      background-color: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background-color: white;
+      margin-bottom: 30px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card h2 {
+      color: #0b4f8a;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+      text-align: justify;
+    }
+
+    .highlight {
+      color: #1d7bc1;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #083b66;
+      color: white;
+      text-align: center;
+      padding: 25px 20px;
+      margin-top: 40px;
+    }
+
+    footer p {
+      margin: 8px 0;
+    }
+
+    .author {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffd166;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .card img {
+        height: 220px;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 8px 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Los tres grandes monumentos de Zaragoza</h1>
+    <p>
+      Zaragoza es una ciudad con un importante patrimonio histórico y artístico.
+      Entre sus monumentos más emblemáticos destacan la <strong>Basílica del Pilar</strong>,
+      <strong>La Seo del Salvador</strong> y el <strong>Palacio de la Aljafería</strong>,
+      tres lugares imprescindibles para conocer la historia y la belleza de la ciudad.
+    </p>
+  </header>
+
+  <nav>
+    <a href="#pilar">Basílica del Pilar</a>
+    <a href="#seo">La Seo del Salvador</a>
+    <a href="#aljaferia">Palacio de la Aljafería</a>
+  </nav>
+
+  <main class="container">
+
+    <section class="intro">
+      <h2 style="margin-bottom: 15px; color:#0b4f8a;">Zaragoza, historia y patrimonio</h2>
+      <p>
+        Situada a orillas del río Ebro, Zaragoza es una de las ciudades más importantes de España.
+        Su historia se refleja en sus monumentos, donde conviven diferentes estilos artísticos y culturales.
+        Visitar estos tres edificios es una excelente forma de descubrir la identidad de la ciudad.
+      </p>
+    </section>
+
+    <section id="pilar" class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Basilica_del_Pilar%2C_Zaragoza%2C_Espa%C3%B1a%2C_2015-01-08%2C_DD_98.JPG" alt="Basílica del Pilar en Zaragoza">
+      <div class="card-content">
+        <h2>Basílica del Pilar</h2>
+        <p>
+          La <span class="highlight">Basílica de Nuestra Señora del Pilar</span> es el monumento más famoso de Zaragoza
+          y uno de los templos más representativos de España. Se sitúa junto al río Ebro y constituye
+          una de las imágenes más reconocibles de la ciudad.
+        </p>
+        <p>
+          Destaca por sus grandes cúpulas, sus torres y su imponente fachada. Su interior alberga
+          importantes elementos artísticos, además de ser un lugar de gran valor religioso y cultural.
+        </p>
+        <p>
+          Es, sin duda, uno de los principales símbolos de Zaragoza y una parada obligatoria para cualquier visitante.
+        </p>
+      </div>
+    </section>
+
+    <section id="seo" class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Catedral_del_Salvador_-_La_Seo_-_Zaragoza.jpg" alt="La Seo del Salvador en Zaragoza">
+      <div class="card-content">
+        <h2>La Seo del Salvador</h2>
+        <p>
+          <span class="highlight">La Seo del Salvador</span> es la catedral de Zaragoza y uno de los edificios
+          históricos más importantes de la ciudad. Su arquitectura refleja diferentes épocas y estilos,
+          lo que la convierte en un monumento especialmente singular.
+        </p>
+        <p>
+          En su exterior destaca la belleza del arte mudéjar, mientras que en su interior se pueden apreciar
+          capillas, retablos y elementos decorativos de gran riqueza artística.
+        </p>
+        <p>
+          Situada en pleno casco histórico, es un ejemplo perfecto de la evolución histórica y cultural de Zaragoza.
+        </p>
+      </div>
+    </section>
+
+    <section id="aljaferia" class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Palacio_de_la_Aljafer%C3%ADa%2C_Zaragoza%2C_Espa%C3%B1a%2C_2015-01-08%2C_DD_107.JPG" alt="Palacio de la Aljafería en Zaragoza">
+      <div class="card-content">
+        <h2>Palacio de la Aljafería</h2>
+        <p>
+          El <span class="highlight">Palacio de la Aljafería</span> es uno de los monumentos más impresionantes de Zaragoza.
+          Se trata de un palacio fortificado de origen islámico, famoso por su valor histórico y por la belleza de su arquitectura.
+        </p>
+        <p>
+          El edificio combina elementos defensivos con espacios de gran elegancia, como patios, arcos decorados
+          y salones históricos. A lo largo del tiempo ha tenido distintos usos y hoy es uno de los lugares más visitados de la ciudad.
+        </p>
+        <p>
+          La Aljafería representa una parte esencial del patrimonio zaragozano y muestra la riqueza cultural de su pasado.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Práctica de página web sobre monumentos de Zaragoza</p>
+    <p class="author">Autor: JOSE IGNACIO CERVERO FRAGO</p>
+  </footer>
+
+</body>
+</html>
