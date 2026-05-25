@@ -3,234 +3,830 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Monumentos de Zaragoza</title>
+  <title>Los grandes monumentos de Zaragoza</title>
+  <meta name="description" content="Página web dedicada a tres de los monumentos más importantes de Zaragoza: la Basílica del Pilar, La Seo del Salvador y el Palacio de la Aljafería." />
   <style>
+    :root {
+      --color-principal: #0b4f8a;
+      --color-secundario: #1d7bc1;
+      --color-oscuro: #082c4a;
+      --color-claro: #f4f8fc;
+      --color-dorado: #ffd166;
+      --color-texto: #1f2937;
+      --color-blanco: #ffffff;
+      --sombra: 0 10px 30px rgba(0, 0, 0, 0.10);
+      --radio: 18px;
+      --transicion: all 0.35s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.6;
-      background-color: #f5f7fa;
-      color: #222;
+      background:
+        radial-gradient(circle at top left, rgba(29,123,193,0.12), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(255,209,102,0.14), transparent 25%),
+        linear-gradient(180deg, #f7fbff 0%, #eef5fb 100%);
+      color: var(--color-texto);
+      line-height: 1.65;
     }
 
-    header {
-      background: linear-gradient(135deg, #0b4f8a, #1d7bc1);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    header p {
-      font-size: 1.1rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    nav {
-      background-color: #083b66;
-      padding: 12px 20px;
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    nav a {
-      color: white;
+    a {
       text-decoration: none;
-      margin: 0 15px;
-      font-weight: bold;
-      transition: color 0.3s ease;
+      color: inherit;
     }
 
-    nav a:hover {
-      color: #ffd166;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: 30px auto;
-    }
-
-    .intro {
-      background-color: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      margin-bottom: 30px;
-    }
-
-    .card {
-      background-color: white;
-      margin-bottom: 30px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .card img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
+    img {
+      max-width: 100%;
       display: block;
     }
 
-    .card-content {
-      padding: 25px;
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
     }
 
-    .card h2 {
-      color: #0b4f8a;
-      margin-bottom: 15px;
-      font-size: 1.8rem;
+    /* HERO */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(11,79,138,0.95), rgba(29,123,193,0.92)),
+        url('https://upload.wikimedia.org/wikipedia/commons/8/8f/Zaragoza_Panorama.jpg') center/cover no-repeat;
+      color: white;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
     }
 
-    .card p {
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.18;
+      animation: flotar 8s ease-in-out infinite;
+    }
+
+    .hero::before {
+      width: 260px;
+      height: 260px;
+      background: var(--color-dorado);
+      top: -70px;
+      right: -50px;
+    }
+
+    .hero::after {
+      width: 200px;
+      height: 200px;
+      background: #ffffff;
+      bottom: -60px;
+      left: -40px;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-18px) translateX(10px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 90px 0 70px;
+      max-width: 760px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.20);
+      padding: 10px 16px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      backdrop-filter: blur(4px);
+      font-size: 0.95rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      line-height: 1.08;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      font-size: 1.12rem;
+      max-width: 700px;
+      margin-bottom: 28px;
+      color: rgba(255,255,255,0.96);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: bold;
+      transition: var(--transicion);
+      box-shadow: var(--sombra);
+    }
+
+    .btn-primary {
+      background: var(--color-dorado);
+      color: #28303a;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      background: #ffdb7e;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.24);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px) scale(1.02);
+      background: rgba(255,255,255,0.20);
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 44, 74, 0.92);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 3px 18px rgba(0, 0, 0, 0.10);
+    }
+
+    .nav-inner {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+
+    .logo {
+      color: white;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .menu {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: white;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: var(--transicion);
+    }
+
+    .menu a:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--color-dorado);
+    }
+
+    /* SECCIONES */
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 16px;
+      color: var(--color-principal);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      max-width: 840px;
+      margin: 0 auto 40px;
+      color: #4b5563;
+      font-size: 1.05rem;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 26px;
+    }
+
+    .mini-card {
+      background: var(--color-blanco);
+      padding: 24px;
+      border-radius: var(--radio);
+      box-shadow: var(--sombra);
+      transition: var(--transicion);
+      border: 1px solid rgba(11,79,138,0.08);
+    }
+
+    .mini-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .mini-card h3 {
       margin-bottom: 12px;
+      color: var(--color-principal);
+      font-size: 1.2rem;
+    }
+
+    .mini-card p {
+      color: #4b5563;
+    }
+
+    /* Monumento */
+    .monument-card {
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      margin-bottom: 34px;
+      border: 1px solid rgba(11,79,138,0.08);
+    }
+
+    .monument-top {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .monument-top img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .monument-card:hover .monument-top img {
+      transform: scale(1.05);
+    }
+
+    .monument-tag {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      background: rgba(8,44,74,0.86);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: bold;
+      backdrop-filter: blur(4px);
+    }
+
+    .monument-content {
+      padding: 30px;
+    }
+
+    .monument-content h2 {
+      color: var(--color-principal);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      margin-bottom: 14px;
+    }
+
+    .lead {
+      font-size: 1.08rem;
+      color: #334155;
+      margin-bottom: 18px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 28px;
+      margin-top: 24px;
+    }
+
+    .text-block p {
+      margin-bottom: 14px;
       text-align: justify;
     }
 
-    .highlight {
-      color: #1d7bc1;
-      font-weight: bold;
+    .info-box {
+      background: linear-gradient(180deg, #f8fbff 0%, #eef5fc 100%);
+      border: 1px solid rgba(11,79,138,0.10);
+      border-radius: 18px;
+      padding: 22px;
     }
 
+    .info-box h3 {
+      margin-bottom: 14px;
+      color: var(--color-principal);
+      font-size: 1.15rem;
+    }
+
+    .info-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .info-box li {
+      margin-bottom: 10px;
+      padding-left: 2px;
+    }
+
+    .quote {
+      margin-top: 18px;
+      padding: 16px 18px;
+      background: #fff8e6;
+      border-left: 5px solid var(--color-dorado);
+      border-radius: 12px;
+      font-style: italic;
+      color: #6b4f00;
+    }
+
+    /* Bloque final */
+    .closing {
+      background: linear-gradient(135deg, rgba(11,79,138,0.08), rgba(29,123,193,0.06));
+      border-top: 1px solid rgba(11,79,138,0.08);
+      border-bottom: 1px solid rgba(11,79,138,0.08);
+    }
+
+    .closing-box {
+      background: white;
+      box-shadow: var(--sombra);
+      border-radius: 24px;
+      padding: 34px;
+      max-width: 980px;
+      margin: 0 auto;
+      border: 1px solid rgba(11,79,138,0.08);
+    }
+
+    .closing-box p {
+      margin-bottom: 14px;
+      text-align: justify;
+    }
+
+    /* Footer */
     footer {
-      background-color: #083b66;
+      background: var(--color-oscuro);
       color: white;
-      text-align: center;
-      padding: 25px 20px;
-      margin-top: 40px;
+      padding: 36px 0;
     }
 
-    footer p {
-      margin: 8px 0;
+    .footer-content {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
     }
 
     .author {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: bold;
-      color: #ffd166;
+      color: var(--color-dorado);
     }
 
-    @media (max-width: 768px) {
-      header h1 {
-        font-size: 2rem;
+    .back-top {
+      display: inline-block;
+      background: rgba(255,255,255,0.12);
+      padding: 12px 18px;
+      border-radius: 999px;
+      transition: var(--transicion);
+    }
+
+    .back-top:hover {
+      background: rgba(255,255,255,0.20);
+      transform: translateY(-3px);
+    }
+
+    /* Animación aparición */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .intro-grid,
+      .content-grid,
+      .footer-content {
+        grid-template-columns: 1fr;
       }
 
-      .card img {
-        height: 220px;
+      .monument-top img {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        min-height: 78vh;
       }
 
-      nav a {
-        display: inline-block;
-        margin: 8px 10px;
+      .hero-content {
+        padding: 70px 0 50px;
+      }
+
+      .menu {
+        gap: 8px;
+      }
+
+      .menu a {
+        font-size: 0.92rem;
+      }
+
+      .monument-content {
+        padding: 22px;
+      }
+
+      .monument-top img {
+        height: 240px;
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Los tres grandes monumentos de Zaragoza</h1>
-    <p>
-      Zaragoza es una ciudad con un importante patrimonio histórico y artístico.
-      Entre sus monumentos más emblemáticos destacan la <strong>Basílica del Pilar</strong>,
-      <strong>La Seo del Salvador</strong> y el <strong>Palacio de la Aljafería</strong>,
-      tres lugares imprescindibles para conocer la historia y la belleza de la ciudad.
-    </p>
+  <header class="hero" id="inicio">
+    <div class="container hero-content">
+      <div class="badge">🏛️ Zaragoza monumental · Historia, arte y patrimonio</div>
+      <h1>Descubriendo tres grandes joyas de Zaragoza ✨</h1>
+      <p>
+        Zaragoza es una ciudad con personalidad propia, marcada por siglos de historia,
+        convivencia cultural y un patrimonio arquitectónico extraordinario. Entre todos sus
+        lugares emblemáticos, destacan especialmente tres monumentos que resumen buena parte de
+        su esencia: la <strong>Basílica del Pilar</strong>, <strong>La Seo del Salvador</strong>
+        y el <strong>Palacio de la Aljafería</strong>. Esta página ofrece un recorrido visual y
+        descriptivo por estos tres espacios imprescindibles.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#monumentos">🚀 Ver monumentos</a>
+        <a class="btn btn-secondary" href="#autor">👤 Ver autor</a>
+      </div>
+    </div>
   </header>
 
   <nav>
-    <a href="#pilar">Basílica del Pilar</a>
-    <a href="#seo">La Seo del Salvador</a>
-    <a href="#aljaferia">Palacio de la Aljafería</a>
+    <div class="nav-inner">
+      <div class="logo">🌆 Zaragoza Monumental</div>
+      <div class="menu">
+        <a href="#inicio">Inicio</a>
+        <a href="#introduccion">Introducción</a>
+        <a href="#pilar">Pilar</a>
+        <a href="#seo">La Seo</a>
+        <a href="#aljaferia">Aljafería</a>
+        <a href="#autor">Autor</a>
+      </div>
+    </div>
   </nav>
 
-  <main class="container">
+  <main>
+    <section id="introduccion">
+      <div class="container">
+        <h2 class="section-title reveal">🌟 Zaragoza, una ciudad con huella histórica</h2>
+        <p class="section-subtitle reveal">
+          Pasear por Zaragoza es recorrer una ciudad donde conviven tradición, arte, religión,
+          arquitectura civil y memoria histórica. Sus monumentos no son solo construcciones
+          destacadas: son también testigos del paso del tiempo y parte esencial de la identidad
+          cultural zaragozana.
+        </p>
 
-    <section class="intro">
-      <h2 style="margin-bottom: 15px; color:#0b4f8a;">Zaragoza, historia y patrimonio</h2>
-      <p>
-        Situada a orillas del río Ebro, Zaragoza es una de las ciudades más importantes de España.
-        Su historia se refleja en sus monumentos, donde conviven diferentes estilos artísticos y culturales.
-        Visitar estos tres edificios es una excelente forma de descubrir la identidad de la ciudad.
-      </p>
-    </section>
+        <div class="intro-grid">
+          <article class="mini-card reveal">
+            <h3>📍 Ubicación privilegiada</h3>
+            <p>
+              Situada a orillas del Ebro, Zaragoza ha sido durante siglos un punto de encuentro
+              y conexión entre territorios. Esa posición estratégica ha favorecido su relevancia
+              histórica y el desarrollo de un rico patrimonio monumental.
+            </p>
+          </article>
 
-    <section id="pilar" class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Basilica_del_Pilar%2C_Zaragoza%2C_Espa%C3%B1a%2C_2015-01-08%2C_DD_98.JPG" alt="Basílica del Pilar en Zaragoza">
-      <div class="card-content">
-        <h2>Basílica del Pilar</h2>
-        <p>
-          La <span class="highlight">Basílica de Nuestra Señora del Pilar</span> es el monumento más famoso de Zaragoza
-          y uno de los templos más representativos de España. Se sitúa junto al río Ebro y constituye
-          una de las imágenes más reconocibles de la ciudad.
-        </p>
-        <p>
-          Destaca por sus grandes cúpulas, sus torres y su imponente fachada. Su interior alberga
-          importantes elementos artísticos, además de ser un lugar de gran valor religioso y cultural.
-        </p>
-        <p>
-          Es, sin duda, uno de los principales símbolos de Zaragoza y una parada obligatoria para cualquier visitante.
-        </p>
+          <article class="mini-card reveal">
+            <h3>🎨 Diversidad artística</h3>
+            <p>
+              En la ciudad se mezclan influencias románicas, góticas, mudéjares, renacentistas,
+              barrocas e islámicas. Esa variedad convierte a Zaragoza en un destino especialmente
+              atractivo para quienes disfrutan del arte y de la arquitectura.
+            </p>
+          </article>
+
+          <article class="mini-card reveal">
+            <h3>❤️ Identidad cultural</h3>
+            <p>
+              La Basílica, La Seo y la Aljafería no solo son edificios admirables; representan
+              también símbolos profundamente vinculados a la historia, a la vida social y a la
+              imagen más reconocible de Zaragoza.
+            </p>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section id="seo" class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Catedral_del_Salvador_-_La_Seo_-_Zaragoza.jpg" alt="La Seo del Salvador en Zaragoza">
-      <div class="card-content">
-        <h2>La Seo del Salvador</h2>
-        <p>
-          <span class="highlight">La Seo del Salvador</span> es la catedral de Zaragoza y uno de los edificios
-          históricos más importantes de la ciudad. Su arquitectura refleja diferentes épocas y estilos,
-          lo que la convierte en un monumento especialmente singular.
+    <section id="monumentos">
+      <div class="container">
+        <h2 class="section-title reveal">🏰 Los tres monumentos más emblemáticos</h2>
+        <p class="section-subtitle reveal">
+          A continuación se presentan tres lugares esenciales para comprender la riqueza
+          patrimonial de Zaragoza. Cada uno posee una personalidad propia y ofrece una experiencia
+          distinta al visitante.
         </p>
-        <p>
-          En su exterior destaca la belleza del arte mudéjar, mientras que en su interior se pueden apreciar
-          capillas, retablos y elementos decorativos de gran riqueza artística.
-        </p>
-        <p>
-          Situada en pleno casco histórico, es un ejemplo perfecto de la evolución histórica y cultural de Zaragoza.
-        </p>
+
+        <!-- PILAR -->
+        <article id="pilar" class="monument-card reveal">
+          <div class="monument-top">
+            <img
+              src="https://sumfinity.com/wp-content/uploads/2018/02/Basilica-Pilar-Zaragoza-sunset-2048x1024.jpg"
+              alt="Vista exterior de la Basílica del Pilar en Zaragoza"
+            />
+            <div class="monument-tag">⛪ Monumento 1</div>
+          </div>
+          <div class="monument-content">
+            <h2>Basílica del Pilar ✨</h2>
+            <p class="lead">
+              La Basílica del Pilar es, probablemente, la imagen más icónica de Zaragoza.
+              Su silueta junto al río Ebro constituye una de las estampas urbanas más
+              reconocibles de España.
+            </p>
+
+            <div class="content-grid">
+              <div class="text-block">
+                <p>
+                  Este templo destaca por su gran presencia monumental, por la amplitud de su
+                  plaza y por el fuerte vínculo simbólico que mantiene con la ciudad. La
+                  Basílica combina majestuosidad arquitectónica, importancia religiosa y un gran
+                  valor cultural, convirtiéndose en uno de los principales puntos de encuentro
+                  tanto para visitantes como para habitantes de Zaragoza.
+                </p>
+                <p>
+                  Su exterior impresiona por el conjunto de torres, cúpulas y volúmenes que
+                  dibujan un perfil inconfundible. En su entorno se genera además una atmósfera
+                  muy especial: la cercanía del río, la amplitud de la plaza y la actividad
+                  constante convierten la visita en una experiencia muy completa, más allá del
+                  propio edificio.
+                </p>
+                <p>
+                  En el interior, la sensación de amplitud y solemnidad se combina con la riqueza
+                  decorativa y con distintos elementos artísticos de interés. La Basílica no es
+                  únicamente un espacio de culto; es también un gran referente patrimonial y uno
+                  de los lugares que mejor representan la historia y la proyección cultural de
+                  Zaragoza.
+                </p>
+                <p>
+                  Visitar el Pilar es acercarse al corazón simbólico de la ciudad. Desde allí se
+                  percibe con claridad la dimensión monumental de Zaragoza y su capacidad para
+                  conservar espacios históricos que siguen plenamente vivos en la actualidad.
+                </p>
+                <div class="quote">
+                  💬 “La Basílica del Pilar es uno de esos lugares que resumen, por sí solos,
+                  buena parte del carácter monumental de Zaragoza.”
+                </div>
+              </div>
+
+              <aside class="info-box">
+                <h3>🔎 Lo más destacado</h3>
+                <ul>
+                  <li>✅ Monumento más conocido de Zaragoza</li>
+                  <li>✅ Imagen emblemática junto al río Ebro</li>
+                  <li>✅ Gran valor religioso, artístico y turístico</li>
+                  <li>✅ Entorno monumental muy atractivo</li>
+                </ul>
+
+                <h3 style="margin-top:18px;">📌 Por qué visitarla</h3>
+                <ul>
+                  <li>⭐ Por su espectacular presencia exterior</li>
+                  <li>⭐ Por su importancia histórica y cultural</li>
+                  <li>⭐ Por ser uno de los símbolos principales de la ciudad</li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </article>
+
+        <!-- SEO -->
+        <article id="seo" class="monument-card reveal">
+          <div class="monument-top">
+            <img
+              src="https://saltaconmigo.com/blog/wp-content/uploads/2022/02/Seo-de-Zaragoza-Techo.jpg"
+              alt="Vista de La Seo del Salvador en Zaragoza"
+            />
+            <div class="monument-tag">🕍 Monumento 2</div>
+          </div>
+          <div class="monument-content">
+            <h2>La Seo del Salvador 🏛️</h2>
+            <p class="lead">
+              La Seo del Salvador es uno de los edificios históricos más singulares de Zaragoza.
+              Su gran atractivo reside en la riqueza de estilos que conviven en el conjunto y en
+              la elegancia de su presencia dentro del casco histórico.
+            </p>
+
+            <div class="content-grid">
+              <div class="text-block">
+                <p>
+                  La Seo es un monumento que invita a observar con calma. Su valor no solo se
+                  encuentra en el edificio como conjunto, sino también en los detalles: materiales,
+                  formas, contrastes y elementos decorativos que muestran la evolución artística de
+                  diferentes épocas. Esa variedad hace que la visita resulte especialmente
+                  interesante para quienes disfrutan descubriendo capas de historia en una misma
+                  construcción.
+                </p>
+                <p>
+                  En su exterior sobresale la huella de tradiciones arquitectónicas muy distintas,
+                  lo que aporta al edificio una personalidad muy marcada. La combinación de estilos
+                  le da un carácter único y refuerza la sensación de estar ante una obra que ha
+                  crecido y se ha transformado con el tiempo.
+                </p>
+                <p>
+                  En el interior, La Seo transmite una gran riqueza patrimonial. La disposición de
+                  sus espacios, la presencia de capillas, retablos y otros componentes decorativos
+                  contribuyen a crear una atmósfera cargada de historia. Es un monumento que se
+                  disfruta tanto desde la admiración artística como desde el interés por la
+                  evolución urbana y cultural de Zaragoza.
+                </p>
+                <p>
+                  Su localización en una de las zonas históricas más significativas de la ciudad
+                  la convierte, además, en una parada imprescindible dentro de cualquier recorrido
+                  patrimonial. La Seo complementa perfectamente la visita al Pilar y ayuda a
+                  comprender la profundidad histórica del centro zaragozano.
+                </p>
+                <div class="quote">
+                  💬 “La Seo destaca por su singularidad: un monumento donde las distintas etapas
+                  históricas dialogan entre sí.”
+                </div>
+              </div>
+
+              <aside class="info-box">
+                <h3>🔎 Lo más destacado</h3>
+                <ul>
+                  <li>✅ Catedral de gran relevancia histórica</li>
+                  <li>✅ Mezcla de estilos arquitectónicos</li>
+                  <li>✅ Importante riqueza artística interior</li>
+                  <li>✅ Ubicación privilegiada en el casco histórico</li>
+                </ul>
+
+                <h3 style="margin-top:18px;">📌 Por qué visitarla</h3>
+                <ul>
+                  <li>⭐ Por su enorme interés artístico</li>
+                  <li>⭐ Por su carácter histórico y monumental</li>
+                  <li>⭐ Por la belleza y singularidad del conjunto</li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </article>
+
+        <!-- ALJAFERIA -->
+        <article id="aljaferia" class="monument-card reveal">
+          <div class="monument-top">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Aljafer%C3%ADa_Palace.jpg/1280px-Aljafer%C3%ADa_Palace.jpg"
+              alt="Vista del Palacio de la Aljafería en Zaragoza"
+            />
+            <div class="monument-tag">🏯 Monumento 3</div>
+          </div>
+          <div class="monument-content">
+            <h2>Palacio de la Aljafería 🌙</h2>
+            <p class="lead">
+              El Palacio de la Aljafería es uno de los tesoros patrimoniales más fascinantes de
+              Zaragoza. Su valor reside en la fuerza de su arquitectura y en la profunda huella
+              histórica que conserva.
+            </p>
+
+            <div class="content-grid">
+              <div class="text-block">
+                <p>
+                  La Aljafería impresiona desde el primer momento por su carácter palaciego y
+                  fortificado. El visitante percibe una construcción sobria en algunas partes y,
+                  al mismo tiempo, rica en detalles en otras zonas, lo que genera un equilibrio
+                  muy atractivo entre monumentalidad y refinamiento.
+                </p>
+                <p>
+                  Este edificio representa una parte esencial del legado histórico de Zaragoza y
+                  recuerda la pluralidad cultural que ha formado la identidad de la ciudad a lo
+                  largo del tiempo. Sus muros, patios y espacios interiores convierten la visita
+                  en una experiencia muy distinta a la de otros monumentos religiosos, lo que
+                  aporta variedad al recorrido monumental por Zaragoza.
+                </p>
+                <p>
+                  Uno de los grandes atractivos de la Aljafería es su capacidad para transmitir
+                  historia a través del espacio. No se trata solo de una construcción hermosa; es
+                  también un lugar que invita a imaginar otras épocas, otras formas de vida y
+                  distintos momentos del pasado de la ciudad.
+                </p>
+                <p>
+                  Su importancia cultural y patrimonial la convierte en un monumento imprescindible.
+                  La Aljafería ayuda a completar una visión más amplia de Zaragoza, mostrando una
+                  dimensión histórica complementaria a la del Pilar y a la de La Seo.
+                </p>
+                <div class="quote">
+                  💬 “La Aljafería aporta a Zaragoza una dimensión palaciega, histórica y cultural
+                  de enorme valor.”
+                </div>
+              </div>
+
+              <aside class="info-box">
+                <h3>🔎 Lo más destacado</h3>
+                <ul>
+                  <li>✅ Palacio fortificado de enorme interés patrimonial</li>
+                  <li>✅ Arquitectura muy característica y reconocible</li>
+                  <li>✅ Espacios interiores llenos de valor histórico</li>
+                  <li>✅ Monumento esencial para comprender la ciudad</li>
+                </ul>
+
+                <h3 style="margin-top:18px;">📌 Por qué visitarlo</h3>
+                <ul>
+                  <li>⭐ Por su singularidad arquitectónica</li>
+                  <li>⭐ Por su relevancia histórica</li>
+                  <li>⭐ Por ofrecer una experiencia distinta a los templos religiosos</li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="aljaferia" class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/Palacio_de_la_Aljafer%C3%ADa%2C_Zaragoza%2C_Espa%C3%B1a%2C_2015-01-08%2C_DD_107.JPG" alt="Palacio de la Aljafería en Zaragoza">
-      <div class="card-content">
-        <h2>Palacio de la Aljafería</h2>
-        <p>
-          El <span class="highlight">Palacio de la Aljafería</span> es uno de los monumentos más impresionantes de Zaragoza.
-          Se trata de un palacio fortificado de origen islámico, famoso por su valor histórico y por la belleza de su arquitectura.
-        </p>
-        <p>
-          El edificio combina elementos defensivos con espacios de gran elegancia, como patios, arcos decorados
-          y salones históricos. A lo largo del tiempo ha tenido distintos usos y hoy es uno de los lugares más visitados de la ciudad.
-        </p>
-        <p>
-          La Aljafería representa una parte esencial del patrimonio zaragozano y muestra la riqueza cultural de su pasado.
-        </p>
+    <section class="closing">
+      <div class="container">
+        <div class="closing-box reveal">
+          <h2 class="section-title" style="margin-bottom: 22px;">📖 Conclusión</h2>
+          <p>
+            Zaragoza posee un patrimonio monumental de enorme valor y estos tres edificios son una
+            magnífica muestra de ello. La Basílica del Pilar representa la imagen más universal de
+            la ciudad; La Seo del Salvador refleja la riqueza histórica y artística del casco
+            antiguo; y el Palacio de la Aljafería añade una dimensión palaciega y cultural
+            imprescindible.
+          </p>
+          <p>
+            Visitar estos monumentos permite descubrir no solo tres edificios extraordinarios, sino
+            también tres formas de entender la historia urbana de Zaragoza. Cada uno aporta una
+            perspectiva diferente y complementaria, lo que convierte este recorrido en una manera
+            muy completa de acercarse a la identidad de la ciudad.
+          </p>
+          <p>
+            En conjunto, Pilar, Seo y Aljafería forman un triángulo patrimonial de primer nivel.
+            Son lugares que merecen ser contemplados con calma, porque en ellos se concentra buena
+            parte del legado artístico, cultural y simbólico de Zaragoza. 🧡
+          </p>
+        </div>
       </div>
     </section>
-
   </main>
 
-  <footer>
-    <p>Práctica de página web sobre monumentos de Zaragoza</p>
-    <p class="author">Autor: JOSE IGNACIO CERVERO FRAGO</p>
+  <footer id="autor">
+    <div class="footer-content">
+      <div>
+        <p style="margin-bottom:8px;">Práctica web sobre los principales monumentos de Zaragoza 🌆</p>
+        <p class="author">Autor: JOSE IGNACIO CERVERO FRAGO</p>
+      </div>
+      <a class="back-top" href="#inicio">⬆ Volver arriba</a>
+    </div>
   </footer>
+
+  <script>
+    // Animación de aparición al hacer scroll
+    const elementosReveal = document.querySelectorAll('.reveal');
+
+    const mostrarAlHacerScroll = new IntersectionObserver((entradas) => {
+      entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    elementosReveal.forEach((elemento) => {
+      mostrarAlHacerScroll.observe(elemento);
+    });
+  </script>
 
 </body>
 </html>
